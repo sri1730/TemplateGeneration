@@ -1,0 +1,18 @@
+server:
+  port: 7060
+spring:
+  application:
+    name : TemplateGeneration
+  mail:
+    host: live.smtp.mailtrap.io
+    port: 587
+    username: smtp@mailtrap.io  # or smtp@mailtrap.io depending on your Mailtrap user
+    password: 0774c81adcfe80fc061348022d65eb24
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
