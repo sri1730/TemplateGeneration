@@ -24,13 +24,13 @@ public class DocumentController {
 
     private String uploadedTemplateContent = "";
 
-    @PostMapping(value="/upload-template", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value="/upload-template")
     public ResponseEntity<ResponsDTO> uploadTemplate(@RequestParam("file") MultipartFile file) throws IOException {
         uploadedTemplateContent = new String(file.getBytes(), StandardCharsets.UTF_8);
         return ResponseEntity.ok( new ResponsDTO(HttpStatus.CREATED,"Template uploaded successfully."));
     }
 
-    @PostMapping(value="/upload-excel", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value="/upload-excel")
     public ResponseEntity<ResponsDTO> uploadExcel(@RequestParam("file") MultipartFile file) {
         if (uploadedTemplateContent.isEmpty()) {
             return ResponseEntity.badRequest().body(new ResponsDTO(HttpStatus.BAD_REQUEST,"Please upload a template first."));

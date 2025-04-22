@@ -4,7 +4,7 @@ spring:
   application:
     name : TemplateGeneration
   profiles:
-    active: local
+    active: prod
   mail:
     host: live.smtp.mailtrap.io
     port: 587
