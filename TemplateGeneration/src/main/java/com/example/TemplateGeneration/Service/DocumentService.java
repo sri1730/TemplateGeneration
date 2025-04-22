@@ -38,18 +38,22 @@ public class DocumentService {
             for (int i = 1; i <= sheet.getLastRowNum(); i++) {
                 Row row = sheet.getRow(i);
                 Map<String, Object> model = new HashMap<>();
-
+                System.out.println("getPhysicalNumberOfCells"+ headerRow.getPhysicalNumberOfCells());
                 for (int j = 0; j < headerRow.getPhysicalNumberOfCells(); j++) {
                     String header = headerRow.getCell(j).getStringCellValue();
                     String value = row.getCell(j).toString();
+                    System.out.println("header"+ header + "value" +value);
                     model.put(header, value);
                 }
 
                 String email = model.get("email").toString();
-                String processedHtml = processTemplate(template, model);
-                byte[] pdfBytes = generatePdfFromHtml(processedHtml);
+                if(!email.isEmpty()) {
+                    String processedHtml = processTemplate(template, model);
+                    byte[] pdfBytes = generatePdfFromHtml(processedHtml);
 
-                sendEmailWithAttachment(email, "Your Document", "Please find attached.", pdfBytes);
+                    sendEmailWithAttachment(email, "Your Document", "Please find attached.", pdfBytes);
+
+                }
             }
 
         } catch (Exception e) {
