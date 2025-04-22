@@ -13,7 +13,6 @@ import java.nio.charset.StandardCharsets;
 
 @RestController
 @RequestMapping("/api/documents")
-@CrossOrigin(origins = "http://localhost:3000")
 public class DocumentController {
 
 

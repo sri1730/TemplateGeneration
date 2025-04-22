@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name : TemplateGeneration
+  profiles:
+    active: local
   mail:
     host: live.smtp.mailtrap.io
     port: 587
